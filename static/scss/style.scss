@@ -21,26 +21,73 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   font-style: normal;
 }
 
-@include media(">=phone", "<tablet") {
+@include media("<tablet") {
   #__next{
     background: linear-gradient(0deg,rgba(172, 129, 49, 0.8),rgba(115, 76, 133, 0.8)),url('/static/images/vector2.jpg');
     background-color: pink
   }
 
+
+  #__next .box {
+    position: absolute;
+    // top: -45vmin;
+    // left: -2vmin;
+    // min-width: 400px;
+    // min-height: 360px;
+    top: -45vmin;
+    left: -5vw;
+    min-width: 400px;
+    min-height: 360px;
+  }
+
+  #__next .grid-layout{
+    grid-template-columns: auto;
+  }
+
+  .description{
+    padding-top:calc(7vmin + (10 - 7) * ((100vw - 375px) / (1440 - 375)))
+  }
+}
+
+@include media("<=phone") {
   #__next .box {
     position: absolute;
     top: -45vmin;
-    left: -40vmin;
+    left: -2vmin;
+    min-width: 400px;
+    min-height: 360px;
+    // top: -45vmin;
+    // left: -40vmin;
+    // min-width: 400px;
+    // min-height: 360px;
+  }
+
+  
+  .first-box{
+    height:calc(35vmin + (40 - 35) * ((100vw - 375px) / (1440 - 375)));
+    
+    .hero{
+      top: 0;
+      width: 100%;
+      .title{
+        width: auto;
+      }
+    }
   }
 }
 
-@include media ("<phone") {
-  #__next .box {
-   min-width: 400px;
-   min-height: 360px;
-  }
+// @include media ("<phone") {
+//   #__next .box {
+//    min-width: 400px;
+//    min-height: 360px;
+//   }
 
+// }
+
+.bg-img {
+  z-index: -1;
 }
+
 
 #__next{
   background: linear-gradient(0deg,rgba(195,207,206,0.8),rgba(195,207,206,0.8)),url('/static/images/vector2.jpg');
@@ -51,8 +98,9 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   background-attachment: fixed;
 }
 .box {
-  width: calc(88vmin + (116 - 88) * ((100vw - 375px) / (1440 - 375)));
-  height: calc(86vmin + (106 - 86) * ((100vw - 375px) / (1440 - 375)));
+  width: calc(60vw + (80 - 60) * ((100vw - 375px) / (1440 - 375)));
+
+  height: calc(55vw + (70 - 55) * ((100vw - 375px) / (1440 - 375)));
   position: absolute;
   top: -45vmin;
   left: -40vmin;
@@ -73,16 +121,17 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
 }
 
 .box-bottom {
-    width: 95vmin;
-    height: 90vmin;
+    width: calc(35vw+ (116 - 35) * ((100vw - 375px) / (1440 - 375)));
+    height: calc(33vw + (106 - 33) * ((100vw - 375px) / (1440 - 375)));
     position: fixed;
     right: -45vmin;
-    bottom: -35vmin;
+    bottom: -40vmin;
 }
 
 .description{
   font-family: HKgrotesk;
   font-size: calc(15px + (25 - 15) * ((100vw - 375px) / (1440 - 375)));
+  padding: 33px;
 }
 
 .hero {
@@ -95,7 +144,7 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
 .title {
   margin: 0;
   width: 100%;
-  padding: 40px 20px;
+  padding:3vw;
   line-height: 1.15;
   font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
   font-family: Gilroy; 
