@@ -21,23 +21,16 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   font-style: normal;
 }
 
-@include media("<tablet") {
+@include media("<=tablet") {
   #__next{
     background: linear-gradient(0deg,rgba(172, 129, 49, 0.8),rgba(115, 76, 133, 0.8)),url('/static/images/vector2.jpg');
     background-color: pink
   }
 
-
   #__next .box {
     position: absolute;
-    // top: -45vmin;
-    // left: -2vmin;
-    // min-width: 400px;
-    // min-height: 360px;
-    top: -45vmin;
-    left: -5vw;
-    min-width: 400px;
-    min-height: 360px;
+    // top: -50%;
+    // left: -25%;
   }
 
   #__next .grid-layout{
@@ -49,20 +42,23 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   }
 }
 
+// @include media (">phone","<tablet") {
+//   #__next .box {
+//    min-width: 400px;
+//    min-height: 360px;
+//   }
+
+// }
+
 @include media("<=phone") {
   #__next .box {
     position: absolute;
-    top: -45vmin;
-    left: -2vmin;
+    top: -25%;
+    left: -5%;
     min-width: 400px;
     min-height: 360px;
-    // top: -45vmin;
-    // left: -40vmin;
-    // min-width: 400px;
-    // min-height: 360px;
   }
 
-  
   .first-box{
     height:calc(35vmin + (40 - 35) * ((100vw - 375px) / (1440 - 375)));
     
@@ -76,18 +72,19 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   }
 }
 
-// @include media ("<phone") {
-//   #__next .box {
-//    min-width: 400px;
-//    min-height: 360px;
-//   }
-
-// }
-
-.bg-img {
-  z-index: -1;
+nav{
+  background-color: #403f4c;
+  padding: 3vh 0;
 }
-
+nav ul{
+  margin : 0;
+}
+.navigation ul li a{
+  color:#d9e4e1;
+  font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
+  font-family: Gilroy; 
+  font-weight: 800;
+}
 
 #__next{
   background: linear-gradient(0deg,rgba(195,207,206,0.8),rgba(195,207,206,0.8)),url('/static/images/vector2.jpg');
@@ -96,19 +93,26 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: HKgrotesk;
+  color: #403f4c;
+  letter-spacing: 0.03em;
 }
 .box {
-  width: calc(60vw + (80 - 60) * ((100vw - 375px) / (1440 - 375)));
-
-  height: calc(55vw + (70 - 55) * ((100vw - 375px) / (1440 - 375)));
+  width: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
+  height: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
+  max-height: 600px;
+  max-width: 600px;
   position: absolute;
-  top: -45vmin;
-  left: -40vmin;
+  top: 0;
+  left: -25%;
   bottom: 0;
-  z-index:99;
-
+  z-index: 99;
+  min-height: 600px;
+  min-width: 600px;
 }
+
 .shape {
+  top:-50%;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -121,11 +125,21 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
 }
 
 .box-bottom {
-    width: calc(35vw+ (116 - 35) * ((100vw - 375px) / (1440 - 375)));
-    height: calc(33vw + (106 - 33) * ((100vw - 375px) / (1440 - 375)));
-    position: fixed;
-    right: -45vmin;
-    bottom: -40vmin;
+  width: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
+  height: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
+  max-height: 600px;
+  max-width: 600px;
+  position: fixed;
+  z-index: 99;
+  min-height: 600px;
+  min-width: 600px;
+  top: 0;
+  left: 70%;
+  bottom: 0;
+}
+
+.box-bottom .shape{
+  top: 120%;
 }
 
 .description{
@@ -153,4 +167,39 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
 .title,
 .description {
   text-align: center;
+}
+.grid-layout{
+  justify-content: center;
+}
+
+.grid-layout .repo-card{
+  padding: 0 35px 20px;
+  text-align: center;
+}
+.grid-layout .repo-card a{
+  font-family: Gilroy;
+  font-weight: 600;
+  color: #403f4c;
+  width: min-content;
+  word-break: keep-all;
+  margin-bottom: 9px;
+  text-transform: uppercase;
+}
+.grid-layout .repo-card a:hover{
+  background: rgba(232,72,85,0.8);
+  box-shadow: none;
+}
+
+.grid-layout .repo-card .repo-lang{
+  font-family: Gilroy;
+  font-weight:600;
+  width: 170px;
+  display: contents;
+}
+
+.grid-layout .repo-card .repo-desc{
+  display: inline;
+  border-radius: 10px;
+  height: 100%;
+  padding: 15px;
 }

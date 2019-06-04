@@ -1,30 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
-
-const links = [
-  { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
+import { Anchor,Heading, ResponsiveContext, Grommet, Box, Button, Grid, Text } from "grommet";
 
 const Nav = () => (
-  <nav>
+  <nav className="navigation">
     <ul>
       <li>
         <Link prefetch href="/">
           <a>Home</a>
         </Link>
       </li>
-      <ul>
-        {links.map(({ key, href, label }) => (
-          <li key={key}>
-            <Link href={href}>
-              <a>{label}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <li>
+        <Link prefetch href='/repo-list'>
+          <a>More Projects</a>
+        </Link> 
+      </li>
     </ul>
 
     <style jsx>{`

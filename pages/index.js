@@ -10,22 +10,18 @@ const Home = () => (
     <Head title="vanessa hurtado" />
     {/* <Nav /> */}
     <ResponsiveContext.Consumer>
-    {size => (
+    {(size) => (
       <Grid
         className="grid-layout"
         align="end"
         alignContent="start"
         columns={['1/3','2/3']}
-        rows={size !== 'small' && { count: 'fill', size: '1/3' }}
-        gap="small"
-              >
+        >
         <Box 
         className="first-box"
           fill="horizontal"
           direction="row"
           flex='grow' justify='start' 
-          responsive="true" 
-          border={{ color: 'brand', size: 'large' }}
           >
 
           <div className="box">
@@ -39,35 +35,19 @@ const Home = () => (
               <br/>
               <span>Hello</span><span>.</span>
             </h1>
+            <Text>{size}</Text>
+
           </div>
 
           <div className="box-bottom">
-          <div className="shape">
+            <div className="shape">
           </div>
         </div>
-                    
-          <Image
-            className='bg-img'
-            fit="cover"
-            src="/static/images/vector2.jpg"
-            style={{
-              display:'inline-block',
-              background: 'linear-gradient(0deg,rgba(195,207,206,0.8),rgba(195,207,206,0.8))',
-              position:'relative',
-              display:'block',
-              height:'200px', 
-              width:'auto',
-              
-            }}
-          />
-
-          
         </Box>
         
         <Box 
-          responsive="true" 
           flex='grow' justify='start'
-          border={{ color: 'light-2', size: 'large' }}  >
+          >
 
             <Text className="description">
                   Highly determined programmer always finding motivation in merging my hobbies with technology.
@@ -80,6 +60,7 @@ const Home = () => (
         
         </Grid>
     )}
+
   </ResponsiveContext.Consumer>
   </Grommet>
 )
