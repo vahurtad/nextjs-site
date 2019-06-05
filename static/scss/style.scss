@@ -21,42 +21,65 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   font-style: normal;
 }
 
-@include media("<=tablet") {
+@include media(">phone","<tablet") {
   #__next{
     background: linear-gradient(0deg,rgba(172, 129, 49, 0.8),rgba(115, 76, 133, 0.8)),url('/static/images/vector2.jpg');
     background-color: pink
   }
 
   #__next .box {
-    position: absolute;
-    // top: -50%;
-    // left: -25%;
+    // left: 0;
+    min-width: 70vw;
+    min-height: 70vw;
+    max-height: 400px;
+    max-width: 400px;
+  }
+
+  #__next .box-bottom {
+    // left: 0;
+    min-width: 70vw;
+    min-height: 70vw;
+    max-height: 400px;
+    max-width: 400px;
+    left: unset;
+    bottom: -25%;
+    top: unset;
+    right: -27%;
+    .shape{
+      top: unset;
+      bottom: unset;
+    }
   }
 
   #__next .grid-layout{
     grid-template-columns: auto;
-  }
-
-  .description{
-    padding-top:calc(7vmin + (10 - 7) * ((100vw - 375px) / (1440 - 375)))
+    .description{
+      margin-top: 23vh;
+    }
   }
 }
 
-// @include media (">phone","<tablet") {
-//   #__next .box {
-//    min-width: 400px;
-//    min-height: 360px;
-//   }
-
-// }
-
 @include media("<=phone") {
-  #__next .box {
-    position: absolute;
-    top: -25%;
-    left: -5%;
-    min-width: 400px;
-    min-height: 360px;
+  #__next .grid-layout{
+    grid-template-columns: auto;
+    .description{
+      margin-top: 6vh;
+    }
+  }
+  
+  #__next {
+    .box {
+      position: absolute;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vw;
+      max-height: 400px;
+      max-width: 400px;
+    }
+    .box-bottom{
+      display: none;
+    }
+
   }
 
   .first-box{
@@ -65,10 +88,10 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
     .hero{
       top: 0;
       width: 100%;
-      .title{
-        width: auto;
-      }
+      text-align: center;
+      padding-left: 0;
     }
+
   }
 }
 
@@ -100,15 +123,15 @@ nav ul{
 .box {
   width: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
   height: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
-  max-height: 600px;
-  max-width: 600px;
   position: absolute;
   top: 0;
   left: -25%;
   bottom: 0;
   z-index: 99;
-  min-height: 600px;
-  min-width: 600px;
+  min-width: 50vw;
+  min-height: 50vw;
+  max-height: 400px;
+  max-width: 400px;
 }
 
 .shape {
@@ -127,25 +150,41 @@ nav ul{
 .box-bottom {
   width: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
   height: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
-  max-height: 600px;
-  max-width: 600px;
   position: fixed;
   z-index: 99;
-  min-height: 600px;
-  min-width: 600px;
-  top: 0;
-  left: 70%;
-  bottom: 0;
+  min-width: 50vw;
+  min-height: 50vw;
+  max-height: 400px;
+  max-width: 400px;
+  left: unset;
+  bottom: -28%;
+  top: unset;
+  right: -21%;
+  
 }
 
 .box-bottom .shape{
-  top: 120%;
+  // top: 115%;
+  top: unset;
+  bottom: unset;
 }
 
-.description{
-  font-family: HKgrotesk;
-  font-size: calc(15px + (25 - 15) * ((100vw - 375px) / (1440 - 375)));
+.grid-layout .description {
   padding: 33px;
+  margin-top: 5vh;
+}
+
+.grid-layout .description .education,
+.grid-layout .description .about {
+  font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
+  font-family: HKgrotesk;
+  
+  span{
+    font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
+    font-family: Gilroy;
+    font-weight: 800;
+  }
+
 }
 
 .hero {
@@ -153,20 +192,22 @@ nav ul{
   top: 0;
   left:0;
   z-index:99;
+  padding-left: 25px;
+  
 }
 
-.title {
+.first-box .title span {
   margin: 0;
   width: 100%;
-  padding:3vw;
   line-height: 1.15;
-  font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
+  font-size: calc(40px + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
   font-family: Gilroy; 
+  font-weight: 800;
 }
 
 .title,
 .description {
-  text-align: center;
+  text-align: left;
 }
 .grid-layout{
   justify-content: center;

@@ -64,13 +64,12 @@ function Repo(props) {
                     }}><Anchor href={data.user.url} color="#403f4c" icon={<Github size="large" />} primary label={data.user.login}/></Heading>  
                     
                     <ResponsiveContext.Consumer>
-                    {size => (
+                    {(size) => (
                         <Grid
                             className="grid-layout repo"
                             align="end"
                             alignContent="start"
                             columns={['1/2','1/2']}
-                            rows={size !== 'small' && { count: 'fill', size: '1/3' }}
                             >
                         {data.user.repositories.nodes.map(repo => (
                             (!repo.isPrivate && !repo.isArchived) ?
@@ -78,7 +77,6 @@ function Repo(props) {
                             fill="vertical"
                             direction="column"
                             flex='grow' justify='start' 
-                            responsive="true"
                             key={repo.id} >
                                 <Button
                                     href={repo.url}
