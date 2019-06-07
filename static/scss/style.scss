@@ -172,6 +172,8 @@ nav ul{
 .grid-layout .description {
   padding: 33px;
   margin-top: 5vh;
+  margin-bottom: 125px;
+  height:100vh;
 }
 
 .grid-layout .description .education,
@@ -243,4 +245,11 @@ nav ul{
   border-radius: 10px;
   height: 100%;
   padding: 15px;
+}
+
+.grid-layout.pinned{
+  width:99vw;
+}
+.grid-layout .repo-pinned{
+  height: 100%;
 }

@@ -7,7 +7,7 @@ import { Image,Heading,ResponsiveContext, Grommet, Box, Button, Grid, Text } fro
 import {YOUR_GITHUB_PERSONAL_TOKEN} from '../.env'
 import Pinned from './Pinned';
 
-const Landing = () => (
+const Landing = (props) => (
   <Grommet full>
     <Head title="van hurtado" />
     {/* <Nav /> */}
@@ -25,23 +25,25 @@ const Landing = () => (
           direction="row"
           flex='grow' justify='start' 
         >
+         
           <div className="box">
             <div className="shape">
             </div>
           </div>
+         
 
           <Heading level={1} className="hero title">
             <Text>Hello<Text>.</Text></Text>
             <br/>
             <Text>Hello<Text>.</Text></Text>
             <br/>
-            <Text>{size}</Text>
+            {console.log(props.isScroll? "Hidden" : "Shown")}
           </Heading>
 
-          <div className="box-bottom">
+          {/* <div className="box-bottom">
             <div className="shape">
             </div>
-          </div>
+          </div> */}
         </Box>
         
         <Box 
@@ -49,6 +51,7 @@ const Landing = () => (
           className="description"
         >
           <Text className="about">
+
             <Text>About.<br/></Text> 
               Highly determined programmer always finding motivation in merging my hobbies with technology.
               <br/>
@@ -64,9 +67,14 @@ const Landing = () => (
           </Text>
 
         </Box>
-        <Box>
+        <Grid
+          className="grid-layout pinned"
+          align="end"
+          alignContent="start"
+          columns={['1/2','1/2']}
+        >
           <Pinned/>
-        </Box>
+        </Grid>
         
       </Grid>
     )}
