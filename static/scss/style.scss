@@ -190,7 +190,7 @@ nav ul{
 }
 
 .hero {
-  position: fixed;
+  position: absolute;
   top: 0;
   left:0;
   z-index:99;
@@ -213,6 +213,7 @@ nav ul{
 }
 .grid-layout{
   justify-content: center;
+  position: relative;
 }
 
 .grid-layout .repo-card{
@@ -248,7 +249,7 @@ nav ul{
 }
 
 .grid-layout.pinned{
-  width:99vw;
+  width:98vw;
 }
 .grid-layout .repo-pinned{
   height: 100%;

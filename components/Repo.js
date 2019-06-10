@@ -82,19 +82,19 @@ function Repo(props) {
                                     href={repo.url}
                                     label={repo.name}
                                     icon={<LinkNext color="#403f4c"/>}
-                                    reverse="true"
+                                    reverse={true}
                                     color="#403f4c"
                                 />
                                 <Box className="repo-desc" background="rgba(195,207,206,0.9)">
                                     <Text>{repo.description}</Text>
                                     <br/>
-                                    <Text color='#403f4c'  style={{"font-weight": "800"}}  >| </Text>
+                                    <Text color='#403f4c' weight={800}>| </Text>
                                     {repo.languages.nodes.map(l => (
                                         <>
                                         <Text className="repo-lang" 
                                         color='#403f4c'  
                                         >{l.name}  </Text> 
-                                        <Text color='#403f4c' style={{"font-weight": "800"}} > | </Text>
+                                        <Text color='#403f4c'weight={800}> | </Text>
                                         </>
                                     ))}
                                 </Box>

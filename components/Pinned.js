@@ -16,6 +16,7 @@ query allPosts($queryString: String!, $repoString: String!) {
       description
       languages(last: 5) {
           nodes {
+            id
           name
           color
           }
@@ -42,14 +43,16 @@ const gitRepoVars = {
     queryString: "civic-app",
     repoString: "civic-app"
 }
+var key_prop = 1;
 const ownerList =["vahurtad", "civic-app"];
 const repoList = {"civic-app": 1,"nextjs-site": 0,"traderfeed": 0,"gdax-tt": 0}
 function Pinned(props) {
     return (
         <>
-        {Object.keys(repoList).map(function(key) {
+        {Object.keys(repoList).map(function(key, id) {
             return (
-                <Query query={gitRepo} variables={{
+                <Query key={id}
+                    query={gitRepo} variables={{
                     queryString: ownerList[repoList[key]],
                     repoString: key
                 }}>
@@ -59,27 +62,30 @@ function Pinned(props) {
                         return (
                             
                             <Box className="repo-card pinned"                         
-                            fill="vertical"
-                            direction="column"
-                            flex='grow' justify='start' 
-                            key={data.repository.id} >
+                                fill="vertical"
+                                direction="column"
+                                flex='grow' justify='start' 
+                                key={data.repository.id} >
+
                                 <Button
                                     href={data.repository.url}
                                     label={data.repository.name}
                                     icon={<LinkNext color="#403f4c"/>}
-                                    reverse="true"
+                                    reverse={true}
                                     color="#403f4c"
+                                    key={data.repository.id} 
                                 />
-                                <Box className="repo-desc" background="rgba(195,207,206,0.9)">
-                                    <Text>{data.repository.description}</Text>
+                                <Box className="repo-desc" background="rgba(195,207,206,0.9)"
+                                key={id} >
+                                    <Text key={id}>{data.repository.description}</Text>
                                     <br/>
-                                    <Text color='#403f4c'  style={{"font-weight": "800"}}  >| </Text>
+                                    <Text color='#403f4c'  weight={800} >| </Text>
                                     {data.repository.languages.nodes.map(l => (
                                         <>
                                         <Text className="repo-lang" 
-                                        color='#403f4c'  
+                                        color='#403f4c'  key={l.id} 
                                         >{l.name}  </Text> 
-                                        <Text color='#403f4c' style={{"font-weight": "800"}} > | </Text>
+                                        <Text color='#403f4c' weight={800} > | </Text>
                                         </>
                                     ))}
                                 </Box>
@@ -87,9 +93,9 @@ function Pinned(props) {
                         )
                     }}
                 </Query>
-                )
+            )
         })}
-        </>
+    </>
 )}
 
 export default Pinned

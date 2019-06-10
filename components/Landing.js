@@ -18,6 +18,7 @@ const Landing = (props) => (
         align="end"
         alignContent="start"
         columns={['1/3','2/3']}
+        
         >
         <Box 
           className="first-box"
@@ -37,7 +38,6 @@ const Landing = (props) => (
             <br/>
             <Text>Hello<Text>.</Text></Text>
             <br/>
-            {console.log(props.isScroll? "Hidden" : "Shown")}
           </Heading>
 
           {/* <div className="box-bottom">
@@ -52,7 +52,7 @@ const Landing = (props) => (
         >
           <Text className="about">
 
-            <Text>About.<br/></Text> 
+            <Text weight={800}>About.<br/></Text> 
               Highly determined programmer always finding motivation in merging my hobbies with technology.
               <br/>
               <br/>
@@ -60,11 +60,16 @@ const Landing = (props) => (
           </Text>
           <Text className="education">
             <br/>
-            <Text>Education.<br/></Text> 
+            <Text weight={800}>Education.<br/></Text> 
             B.S., Computer Science<br/>
             University of California, Santa Cruz<br/>
             Graduated 2016
           </Text>
+
+
+        </Box>
+        <Box>
+        <Text weight={800} className='seeMore'><br/>See Pinned Projects</Text>
 
         </Box>
         <Grid
