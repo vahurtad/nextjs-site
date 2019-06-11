@@ -39,11 +39,6 @@ query allPosts($queryString: String!, $repoString: String!) {
   }
 `;
 
-const gitRepoVars = {
-    queryString: "civic-app",
-    repoString: "civic-app"
-}
-var key_prop = 1;
 const ownerList =["vahurtad", "civic-app"];
 const repoList = {"civic-app": 1,"nextjs-site": 0,"traderfeed": 0,"gdax-tt": 0}
 function Pinned(props) {

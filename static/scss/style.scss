@@ -168,7 +168,10 @@ nav ul{
   top: unset;
   bottom: unset;
 }
-
+.grid-layout .heading-bold{
+  font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
+  font-family: Gilroy;
+}
 .grid-layout .description {
   padding: 33px;
   margin-top: 5vh;
@@ -177,17 +180,20 @@ nav ul{
 }
 
 .grid-layout .description .education,
-.grid-layout .description .about {
+.grid-layout .description .about{
   font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
   font-family: HKgrotesk;
-  
-  span{
-    font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
-    font-family: Gilroy;
-    font-weight: 800;
+  max-width: 50vw;
   }
 
+.grid-layout .description .seeMore {
+  font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
+  font-family: Gilroy;
 }
+.grid-layout .description a{
+  display: inline-table;
+}
+
 
 .hero {
   position: absolute;
