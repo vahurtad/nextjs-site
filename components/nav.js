@@ -1,19 +1,25 @@
-import React from 'react'
-import Link from 'next/link'
-import { Anchor,Heading, ResponsiveContext, Grommet, Box, Button, Grid, Text } from "grommet";
+import React from "react";
+import Link from "next/link";
+import { Previous, Next } from "grommet-icons";
 
 const Nav = () => (
   <nav className="navigation">
     <ul>
       <li>
         <Link prefetch href="/">
-          <a>Home</a>
+          <a>
+            <Previous color="#403f4c" size="medium" />
+            Home
+          </a>
         </Link>
       </li>
       <li>
-        <Link prefetch href='/repo-list'>
-          <a>More Projects</a>
-        </Link> 
+        <Link prefetch href="/repo-list">
+          <a>
+            Projects
+            <Next color="#403f4c" size="medium" />
+          </a>
+        </Link>
       </li>
     </ul>
 
@@ -44,6 +50,6 @@ const Nav = () => (
       }
     `}</style>
   </nav>
-)
+);
 
-export default Nav
+export default Nav;

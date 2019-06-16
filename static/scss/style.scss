@@ -1,6 +1,10 @@
-@import 'node_modules/include-media/dist/_include-media.scss';
+@import "node_modules/include-media/dist/_include-media.scss";
 
-$breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
+$breakpoints: (
+  phone: 375px,
+  tablet: 768px,
+  desktop: 1024px
+);
 
 @font-face {
   font-family: "Gilroy";
@@ -21,10 +25,15 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
   font-style: normal;
 }
 
-@include media(">phone","<tablet") {
-  #__next{
-    background: linear-gradient(0deg,rgba(172, 129, 49, 0.8),rgba(115, 76, 133, 0.8)),url('/static/images/vector2.jpg');
-    background-color: pink
+@include media(">phone", "<tablet") {
+  #__next {
+    background: linear-gradient(
+        0deg,
+        rgba(172, 129, 49, 0.8),
+        rgba(115, 76, 133, 0.8)
+      ),
+      url("/static/images/vector2.jpg");
+    background-color: pink;
   }
 
   #__next .box {
@@ -45,28 +54,28 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
     bottom: -25%;
     top: unset;
     right: -27%;
-    .shape{
+    .shape {
       top: unset;
       bottom: unset;
     }
   }
 
-  #__next .grid-layout{
+  #__next .grid-layout {
     grid-template-columns: auto;
-    .description{
+    .description {
       margin-top: 23vh;
     }
   }
 }
 
 @include media("<=phone") {
-  #__next .grid-layout{
+  #__next .grid-layout {
     grid-template-columns: auto;
-    .description{
+    .description {
       margin-top: 6vh;
     }
   }
-  
+
   #__next {
     .box {
       position: absolute;
@@ -76,41 +85,44 @@ $breakpoints: (phone: 375px, tablet: 768px, desktop: 1024px);
       max-height: 400px;
       max-width: 400px;
     }
-    .box-bottom{
+    .box-bottom {
       display: none;
     }
-
   }
 
-  .first-box{
-    height:calc(35vmin + (40 - 35) * ((100vw - 375px) / (1440 - 375)));
-    
-    .hero{
+  .first-box {
+    height: calc(35vmin + (40 - 35) * ((100vw - 375px) / (1440 - 375)));
+
+    .hero {
       top: 0;
       width: 100%;
       text-align: center;
       padding-left: 0;
     }
-
   }
 }
 
-nav{
-  background-color: #403f4c;
+nav {
+  // background-color: #403f4c;
   padding: 3vh 0;
 }
-nav ul{
-  margin : 0;
+nav ul {
+  margin: 0;
 }
-.navigation ul li a{
-  color:#d9e4e1;
+.navigation ul li a {
+  color: #403f4c;
   font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
-  font-family: Gilroy; 
+  font-family: Gilroy;
   font-weight: 800;
 }
 
-#__next{
-  background: linear-gradient(0deg,rgba(195,207,206,0.8),rgba(195,207,206,0.8)),url('/static/images/vector2.jpg');
+#__next {
+  background: linear-gradient(
+      0deg,
+      rgba(195, 207, 206, 0.8),
+      rgba(195, 207, 206, 0.8)
+    ),
+    url("/static/images/vector2.jpg");
   background-position-x: center;
   background-position-y: top;
   background-repeat: no-repeat;
@@ -135,7 +147,7 @@ nav ul{
 }
 
 .shape {
-  top:-50%;
+  top: -50%;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -160,73 +172,92 @@ nav ul{
   bottom: -28%;
   top: unset;
   right: -21%;
-  
 }
 
-.box-bottom .shape{
+.box-bottom .shape {
   // top: 115%;
   top: unset;
   bottom: unset;
 }
-.grid-layout .heading-bold{
+.grid-layout .heading-bold {
   font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
   font-family: Gilroy;
 }
+
+.grid-layout .back-top {
+  width: 98vw;
+  text-align: center;
+}
+
 .grid-layout .description {
-  padding: 33px;
-  margin-top: 5vh;
-  margin-bottom: 125px;
-  height:100vh;
+  padding: 33px 33px 0;
+}
+.grid-layout .socials {
+  // margin-bottom: 100vh;//
+  z-index: 99;
+  padding: 0 33px 0;
+  .pinned-link {
+    width: 96vw;
+    text-align: center;
+  }
 }
 
 .grid-layout .description .education,
-.grid-layout .description .about{
+.grid-layout .description .about {
   font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
   font-family: HKgrotesk;
   max-width: 50vw;
-  }
+}
 
 .grid-layout .description .seeMore {
   font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
   font-family: Gilroy;
 }
-.grid-layout .description a{
+.grid-layout .description a {
   display: inline-table;
 }
-
 
 .hero {
   position: absolute;
   top: 0;
-  left:0;
-  z-index:99;
+  left: 0;
+  z-index: 99;
   padding-left: 25px;
-  
 }
 
-.first-box .title span {
-  margin: 0;
-  width: 100%;
-  line-height: 1.15;
-  font-size: calc(40px + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
-  font-family: Gilroy; 
+.first-box .title {
+  span:not(.name) {
+    margin: 0;
+    width: 100%;
+    line-height: 1.15;
+    font-size: calc(40px + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
+    font-family: Gilroy;
+    font-weight: 800;
+  }
+}
+.grid-layout .first-box .title .name {
+  font-size: calc(30px + (40 - 30) * ((100vw - 375px) / (1440 - 375)));
   font-weight: 800;
+  font-family: Gilroy;
+  span {
+    font-size: calc(30px + (40 - 30) * ((100vw - 375px) / (1440 - 375)));
+  }
 }
 
 .title,
 .description {
   text-align: left;
 }
-.grid-layout{
+.grid-layout {
   justify-content: center;
   position: relative;
 }
 
-.grid-layout .repo-card{
+.grid-layout .repo-card {
   padding: 0 35px 20px;
   text-align: center;
 }
-.grid-layout .repo-card a{
+.grid-layout .repo-card a {
   font-family: Gilroy;
   font-weight: 600;
   color: #403f4c;
@@ -235,28 +266,38 @@ nav ul{
   margin-bottom: 9px;
   text-transform: uppercase;
 }
-.grid-layout .repo-card a:hover{
-  background: rgba(232,72,85,0.8);
+.grid-layout .repo-card a:hover {
+  background: rgba(232, 72, 85, 0.8);
   box-shadow: none;
 }
 
-.grid-layout .repo-card .repo-lang{
+.grid-layout .repo-card .repo-lang {
   font-family: Gilroy;
-  font-weight:600;
+  font-weight: 600;
   width: 170px;
   display: contents;
 }
 
-.grid-layout .repo-card .repo-desc{
+.grid-layout .repo-card .repo-desc {
   display: inline;
   border-radius: 10px;
   height: 100%;
   padding: 15px;
 }
 
-.grid-layout.pinned{
-  width:98vw;
+.grid-layout.pinned {
+  width: 98vw;
 }
-.grid-layout .repo-pinned{
+.grid-layout .repo-pinned {
   height: 100%;
+}
+
+.grid-layout.pinned > a {
+  position: absolute;
+  top: -50px;
+  padding-left: 40px;
+  color: #403f4c;
+  font-size: calc(30px + (40 - 30) * ((100vw - 375px) / (1440 - 375)));
+  font-weight: 800;
+  font-family: Gilroy;
 }
