@@ -4,6 +4,7 @@ import Head from "./head";
 import "../static/scss/style.scss";
 import {
   WorldMap,
+  Drop,
   Paragraph,
   Anchor,
   Image,
@@ -23,7 +24,13 @@ class Landing extends Component {
     super();
     this.myRef = React.createRef();
     this.top = React.createRef();
+    this.place = React.createRef();
+    this.state = false;
+    this.sfstate = false;
+    this.location = {};
+    this.over = {};
   }
+
   // handleClick = () => alert(this.myRef.current.value)
   // componentDidMount() {
   //   document.title = 'Components - ';
@@ -42,6 +49,24 @@ class Landing extends Component {
     this.top.current.scrollIntoView({
       behavior: "smooth"
     });
+  };
+
+  onSelectPlace = ([lat, lon]) => {
+    console.log(this.place.current);
+
+    if (lat == -11.376121998318009) {
+      if (lon == -75.56989247311827) {
+        console.log("Lima", this.state);
+        this.setState({ state: !this.state.state, location: "Lima" });
+      }
+    } else if (lat == 38.667966663699666) {
+      if (lon == -121.3763440860215) {
+        console.log("SF", this.state);
+        this.setState({ sfstate: !this.state.sfstate, location: "SF" });
+      }
+    } else {
+      console.log(lat, lon);
+    }
   };
 
   render() {
@@ -142,25 +167,41 @@ class Landing extends Component {
                   target="blank"
                 />
               </Box>
-              <Box width={"100%"} className="map">
+              <Box
+                className="map"
+                ref={this.place}
+                // onMouseOver={() => this.setState({ over: true })}
+                // onMouseOut={() => this.setState({ over: false })}
+              >
                 <WorldMap
+                  width={"400"}
                   color="#403f4c"
+                  legend={true}
                   continents={[
                     {
                       name: "South America",
-                      color: "neutral-4",
-                      onClick: name => {}
+                      color: "neutral-4"
+                    },
+                    {
+                      name: "North America",
+                      color: "neutral-4"
                     }
                   ]}
-                  onSelectPlace={(lat, lon) => {}}
+                  onSelectPlace={place => {
+                    this.onSelectPlace(place);
+                  }}
                   places={[
                     {
                       name: "Lima",
                       location: [-12.046374, -77.042793],
-                      color: "blue",
-                      onClick: name => {
-                        alert(name);
-                      }
+                      color: this.state.state ? "accent-1" : "blue",
+                      id: "lima"
+                    },
+                    {
+                      name: "SF",
+                      location: [37.553152, -122.302895],
+                      color: this.state.sfstate ? "accent-1" : "blue",
+                      id: "bayarea"
                     }
                   ]}
                   selectColor="#403f4c"
@@ -175,6 +216,19 @@ class Landing extends Component {
                   onClick={this.scrollToView}
                 />
               </Box>
+
+              {/* {this.place.current && (
+              <Drop align={{ "left": "left" }} target={this.place.current} plain>
+                <Box
+                  margin="xsmall"
+                  pad="small"
+                  background="dark-3"
+                  round={{ size: "medium", corner: "left" }}
+                >
+                  {this.state.location ? this.state.location: undefined}
+                </Box>
+              </Drop>
+            )} */}
             </Grid>
           )}
         </ResponsiveContext.Consumer>
