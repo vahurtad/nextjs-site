@@ -1,37 +1,29 @@
-import React, { Component } from "react";
-import Link from "next/link";
-import Head from "./head";
-import "../static/scss/style.scss";
+import React, { Component } from 'react';
+import '../static/scss/style.scss';
 import {
   WorldMap,
-  Drop,
   Paragraph,
   Anchor,
-  Image,
   Heading,
   ResponsiveContext,
   Grommet,
   Box,
-  Button,
   Grid,
   Text
-} from "grommet";
-import Pinned from "./Pinned";
-import { Down, Up, Mail, Document, Linkedin, Github } from "grommet-icons";
+} from 'grommet';
+import { Down, Up, Mail, Document, Linkedin, Github } from 'grommet-icons';
+import Head from './head';
+import Pinned from './Pinned';
 
 class Landing extends Component {
   constructor() {
     super();
-    this.myRef = React.createRef();
+    this.up = React.createRef();
     this.top = React.createRef();
-    this.place = React.createRef();
-    this.state = false;
-    this.sfstate = false;
-    this.location = {};
-    this.over = {};
+    this.state = { pe: false, sf: false, location: '' };
   }
 
-  // handleClick = () => alert(this.myRef.current.value)
+  // handleClick = () => alert(this.up.current.value)
   // componentDidMount() {
   //   document.title = 'Components - ';
   //   this.scrollToView();
@@ -41,46 +33,47 @@ class Landing extends Component {
   //   this.scrollToView();
   // }
   scrollToView = () => {
-    this.myRef.current.scrollIntoView({
-      behavior: "smooth"
+    this.up.current.scrollIntoView({
+      behavior: 'smooth'
     });
   };
+
   scrollTop = () => {
     this.top.current.scrollIntoView({
-      behavior: "smooth"
+      behavior: 'smooth'
     });
   };
 
   onSelectPlace = ([lat, lon]) => {
-    console.log(this.place.current);
-
-    if (lat == -11.376121998318009) {
-      if (lon == -75.56989247311827) {
-        console.log("Lima", this.state);
-        this.setState({ state: !this.state.state, location: "Lima" });
+    const { pe, sf } = this.state;
+    if (lat === -11.376121998318009) {
+      if (lon === -75.56989247311827) {
+        this.setState({ pe: !pe });
+        if (pe) this.setState({ location: '' });
+        else this.setState({ location: 'Lima' });
       }
-    } else if (lat == 38.667966663699666) {
-      if (lon == -121.3763440860215) {
-        console.log("SF", this.state);
-        this.setState({ sfstate: !this.state.sfstate, location: "SF" });
+    } else if (lat === 38.667966663699666) {
+      if (lon === -121.3763440860215) {
+        this.setState({ sf: !sf });
+        if (sf) this.setState({ location: '' });
+        else this.setState({ location: 'Bay Area' });
       }
-    } else {
-      console.log(lat, lon);
     }
   };
 
   render() {
+    const { pe, sf, location } = this.state;
     return (
       <Grommet full>
         <Head title="van hurtado" />
         {/* <Nav /> */}
         <ResponsiveContext.Consumer>
-          {size => (
+          {() => (
             <Grid
               className="grid-layout"
               align="start"
               alignContent="start"
-              columns={["1/3", "2/3"]}
+              columns={['1/3', '2/3']}
             >
               <Box
                 className="first-box"
@@ -95,16 +88,19 @@ class Landing extends Component {
                   </div>
                 </div>
                 <Heading level={1} className="hero title">
-                  <Text>
-                    Hello<Text>.</Text>
+                  <Text className="hello">
+                    Hello
+                    <Text>.</Text>
                   </Text>
                   <br />
-                  <Text>
-                    Hello<Text>.</Text>
+                  <Text className="world">
+                    World
+                    <Text>.</Text>
                   </Text>
                   <Text className="name">
-                    <br style={{ "margin-bottom": "0.75em" }} />
-                    I'm <Text>Vanessa</Text>
+                    <br style={{ 'margin-bottom': '0.75em' }} />
+                    I`m
+                    <Text> Vanessa</Text>
                     <Text>.</Text>
                   </Text>
                 </Heading>
@@ -119,7 +115,7 @@ class Landing extends Component {
                   merging my hobbies with technology.
                   <br />
                   <br />
-                  I'm a casual gamer, and on my free time I enjoy learning about
+                  I`m a casual gamer, and on my free time I enjoy learning about
                   data, statistics and other new technologies.
                 </Paragraph>
                 <Paragraph className="education">
@@ -163,84 +159,93 @@ class Landing extends Component {
                 <Anchor
                   icon={<Mail color="#403f4c" size="large" />}
                   label="Email me"
-                  href={`mailto:vanessa_hurtado@yahoo.com`}
+                  href="mailto:vanessa_hurtado@yahoo.com"
                   target="blank"
                 />
               </Box>
-              <Box
-                className="map"
-                ref={this.place}
-                // onMouseOver={() => this.setState({ over: true })}
-                // onMouseOut={() => this.setState({ over: false })}
-              >
-                <WorldMap
-                  width={"400"}
-                  color="#403f4c"
-                  legend={true}
-                  continents={[
-                    {
-                      name: "South America",
-                      color: "neutral-4"
-                    },
-                    {
-                      name: "North America",
-                      color: "neutral-4"
-                    }
-                  ]}
-                  onSelectPlace={place => {
-                    this.onSelectPlace(place);
-                  }}
-                  places={[
-                    {
-                      name: "Lima",
-                      location: [-12.046374, -77.042793],
-                      color: this.state.state ? "accent-1" : "blue",
-                      id: "lima"
-                    },
-                    {
-                      name: "SF",
-                      location: [37.553152, -122.302895],
-                      color: this.state.sfstate ? "accent-1" : "blue",
-                      id: "bayarea"
-                    }
-                  ]}
-                  selectColor="#403f4c"
-                />
-                <Anchor
-                  className="pinned-link"
-                  weight={800}
-                  color="#403f4c"
-                  label="See Pinned Projects."
-                  reverse={true}
-                  icon={<Down color="#403f4c" size="large" />}
-                  onClick={this.scrollToView}
-                />
-              </Box>
-
-              {/* {this.place.current && (
-              <Drop align={{ "left": "left" }} target={this.place.current} plain>
-                <Box
-                  margin="xsmall"
-                  pad="small"
-                  background="dark-3"
-                  round={{ size: "medium", corner: "left" }}
-                >
-                  {this.state.location ? this.state.location: undefined}
-                </Box>
-              </Drop>
-            )} */}
             </Grid>
           )}
         </ResponsiveContext.Consumer>
+        <Anchor
+          className="pinned-link"
+          weight={800}
+          color="#403f4c"
+          label="See Pinned Projects."
+          reverse
+          icon={<Down color="#403f4c" size="large" />}
+          onClick={this.scrollToView}
+        />
+        <Box
+          className="map"
+          ref={this.up}
+          // onMouseOver={() => this.setState({ over: true })}
+          // onMouseOut={() => this.setState({ over: false })}
+        >
+          <Paragraph className="" alignSelf="center">
+            {'From '}
+            {pe ? (
+              <Text className="location-text" weight={800}>
+                {`${location}`}
+              </Text>
+            ) : (
+              ' Lima'
+            )}
+            {', Peru to the '}
+            {sf ? (
+              <Text className="location-text" weight={800}>
+                {`${location}`}
+              </Text>
+            ) : (
+              ' Bay Area '
+            )}
+            {'.'}
+          </Paragraph>
+          <WorldMap
+            alignSelf="center"
+            height="350"
+            color="#403f4c"
+            legend
+            continents={[
+              {
+                name: 'South America',
+                color: '#e84855'
+                // onHover: () => this.setState({ over: false })
+              },
+              {
+                name: 'North America',
+                color: '#e84855'
+              }
+            ]}
+            onSelectPlace={place => {
+              this.onSelectPlace(place);
+            }}
+            places={[
+              {
+                name: 'Lima',
+                location: [-12.046374, -77.042793],
+                color: pe ? '#69ace2' : '#403f4c',
+                id: 'lima'
+                // onHover: () => this.setState({ over: true })
+              },
+              {
+                name: 'SF',
+                location: [37.553152, -122.302895],
+                color: sf ? '#69ace2' : '#403f4c',
+                id: 'bayarea'
+              }
+            ]}
+            selectColor="#403f4c"
+          />
+        </Box>
         <Grid
           id="pinned"
           className="grid-layout pinned"
           align="end"
           alignContent="start"
-          columns={["1/2", "1/2"]}
+          columns={['1/2', '1/2']}
         >
           <Pinned />
-          <span ref={this.myRef} />
+          {/* <span ref={this.up} /> */}
         </Grid>
         <br />
         <Anchor

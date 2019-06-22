@@ -1,4 +1,4 @@
-@import "node_modules/include-media/dist/_include-media.scss";
+@import 'node_modules/include-media/dist/_include-media.scss';
 
 $breakpoints: (
   phone: 375px,
@@ -6,34 +6,39 @@ $breakpoints: (
   desktop: 1024px
 );
 
+$tomato: #e84855;
+$periwinkle: #69ace2;
+$purplegray: #403f4c;
+$subtle-tomato: rgba(232, 72, 85, 0.6);
+$subtle-peri: rgba(105, 172, 226, 0.7);
+
 @font-face {
-  font-family: "Gilroy";
-  src: url("/static/fonts/Gilroy-ExtraBold.otf") format("opentype");
+  font-family: 'Gilroy';
+  src: url('/static/fonts/Gilroy-ExtraBold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
-  font-family: "Gilroy";
-  src: url("/static/fonts/Gilroy-Light.otf") format("opentype");
+  font-family: 'Gilroy';
+  src: url('/static/fonts/Gilroy-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: "HKgrotesk";
-  src: url("/static/fonts/HKGrotesk-Medium.otf") format("opentype");
+  font-family: 'HKgrotesk';
+  src: url('/static/fonts/HKGrotesk-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
 }
 
-@include media(">phone", "<tablet") {
+@include media('>phone', '<tablet') {
   #__next {
     background: linear-gradient(
         0deg,
         rgba(172, 129, 49, 0.8),
         rgba(115, 76, 133, 0.8)
       ),
-      url("/static/images/vector2.jpg");
-    background-color: pink;
+      url('/static/images/vector2.jpg');
   }
 
   #__next .box {
@@ -68,7 +73,7 @@ $breakpoints: (
   }
 }
 
-@include media("<=phone") {
+@include media('<=phone') {
   #__next .grid-layout {
     grid-template-columns: auto;
     .description {
@@ -110,7 +115,7 @@ nav ul {
   margin: 0;
 }
 .navigation ul li a {
-  color: #403f4c;
+  color: $purplegray;
   font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
   font-family: Gilroy;
   font-weight: 800;
@@ -122,7 +127,7 @@ nav ul {
       rgba(195, 207, 206, 0.8),
       rgba(195, 207, 206, 0.8)
     ),
-    url("/static/images/vector2.jpg");
+    url('/static/images/vector2.jpg');
   background-position-x: center;
   background-position-y: top;
   background-repeat: no-repeat;
@@ -184,22 +189,42 @@ nav ul {
   font-family: Gilroy;
 }
 
-.grid-layout .back-top {
-  width: 98vw;
-  text-align: center;
+.back-top svg {
+  position: relative;
+  bottom: -7%;
+  left: 50%;
+  z-index: 2;
+  letter-spacing: 0.1em;
+  text-decoration: none;
 }
 
 .grid-layout .description {
   padding: 33px 33px 0;
 }
 .grid-layout .socials {
+  .heading-bold {
+    font-size: calc(25px + (30 - 25) * ((100vw - 375px) / (1440 - 375)));
+  }
+
   // margin-bottom: 100vh;//
   z-index: 99;
   padding: 0 33px 0;
-  .pinned-link {
-    width: 96vw;
-    text-align: center;
+  a {
+    display: inline-table;
+    color: $purplegray;
+    font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
   }
+}
+.pinned-link span {
+  // width: 96vw;
+  // text-align: center;
+  display: inline-flex;
+  position: relative;
+  bottom: 10vh;
+  left: 41%;
+  z-index: 2;
+  letter-spacing: 0.1em;
+  text-decoration: none;
 }
 
 .grid-layout .description .education,
@@ -226,6 +251,17 @@ nav ul {
 }
 
 .first-box .title {
+  .hello {
+    color: $tomato;
+    span {
+      color: $periwinkle;
+    }
+  }
+  .world {
+    span {
+      color: $tomato;
+    }
+  }
   span:not(.name) {
     margin: 0;
     width: 100%;
@@ -233,14 +269,19 @@ nav ul {
     font-size: calc(40px + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
     font-family: Gilroy;
     font-weight: 800;
+    text-transform: uppercase;
   }
 }
 .grid-layout .first-box .title .name {
-  font-size: calc(30px + (40 - 30) * ((100vw - 375px) / (1440 - 375)));
-  font-weight: 800;
-  font-family: Gilroy;
+  font-size: calc(20px + (30 - 20) * ((100vw - 375px) / (1440 - 375)));
+  font-weight: 200;
+  font-family: HKgrotesk;
+  text-transform: uppercase;
   span {
-    font-size: calc(30px + (40 - 30) * ((100vw - 375px) / (1440 - 375)));
+    font-size: calc(20px + (30 - 20) * ((100vw - 375px) / (1440 - 375)));
+    font-family: HKgrotesk;
+    font-weight: 200;
+    text-transform: uppercase;
   }
 }
 
@@ -251,23 +292,26 @@ nav ul {
 .grid-layout {
   justify-content: center;
   position: relative;
+  height: 100vh;
 }
 
 .grid-layout .repo-card {
   padding: 0 35px 20px;
   text-align: center;
+  min-height: unset;
 }
 .grid-layout .repo-card a {
   font-family: Gilroy;
   font-weight: 600;
   color: #403f4c;
-  width: min-content;
+  // width: min-content;
+  background-color: $subtle-tomato;
   word-break: keep-all;
   margin-bottom: 9px;
   text-transform: uppercase;
 }
 .grid-layout .repo-card a:hover {
-  background: rgba(232, 72, 85, 0.8);
+  background: $subtle-peri;
   box-shadow: none;
 }
 
@@ -279,17 +323,29 @@ nav ul {
 }
 
 .grid-layout .repo-card .repo-desc {
-  display: inline;
+  display: inline-block;
   border-radius: 10px;
   height: 100%;
   padding: 15px;
 }
 
-.grid-layout.pinned {
-  width: 98vw;
-}
 .grid-layout .repo-pinned {
   height: 100%;
+}
+div.map {
+  // margin-top: 100vh;
+  p {
+    font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
+    .location-text {
+      background-color: $subtle-peri;
+      font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
+      text-decoration: underline wavy $tomato;
+    }
+  }
+}
+.map svg {
+  width: 98vw;
+  margin-bottom: 20vh;
 }
 
 .grid-layout.pinned > a {

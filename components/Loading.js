@@ -1,6 +1,6 @@
-import React from "react";
-import "../static/scss/style.scss";
-import { Image, Box, Grid, Heading } from "grommet";
+import React from 'react';
+import '../static/scss/style.scss';
+import { Image, Box, Grid, Heading } from 'grommet';
 
 const Loading = () => (
   <Grid
@@ -18,7 +18,7 @@ const Loading = () => (
           src="static\images\graphql.svg"
           width="100px"
           alignSelf="center"
-        />{" "}
+        />
       </Heading>
     </Box>
   </Grid>
