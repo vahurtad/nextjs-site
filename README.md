@@ -1,7 +1,9 @@
 # Personal Website
 
-My personal website built with React Library for the simplicity, the reusable components, handling data with states, faster virtual DOM. Am also using grommet framework for React used for accesability and responsiveness. GraphQL is used to query for the data needed from Github to show my repositories.
-![design image](static\images\design_desktop.png)
+My personal website is built with React Library for the simplicity, the reusable components, handling data with states, faster virtual DOM. Am also using NextJS for static rendering and grommet framework for responsiveness and accesability every website should include. GraphQL is used to query for the data needed from Github to show my repositories and README content.
+
+#### Prototype
+![design image](static/images/design_desktop.png)
 
 ### Timeline
 
@@ -20,8 +22,7 @@ I learned that design is not only the hardest but also the most important challe
 Another big challenge for me was getting GraphQL integration with the correct GraphQL query. After I was able to connect to Github, I found it easy to make the queries that I needed. There was not a lot of help online but with the documentation, I was able to correctly query what I needed.
 
 From my previous experiences, I have learned to take every step of the development is needed to finish the product on time, especially iterating before development starts. If I did not have a design before building my website, I would still be lost in finding the right features, the right colors and the best images rather than the user experience. 
-
 During the start of my iteration and research, I looked at what I wanted: simplicity and user experience. I found articles saved from my weekly newsletters which I had saved and helped me figure out this process better.
 
 ### Help
-I was able to get GraphQl + Apollo + Node to work with the help of [HttpLink](https://github.com/brentmclark/node-graphql-playground) with some more edits I made.
+I was able to use GraphQl + Apollo + Node with the help of [HttpLink in this example](https://github.com/brentmclark/node-graphql-playground) with more edits of my own.

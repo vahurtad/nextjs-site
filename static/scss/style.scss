@@ -8,9 +8,14 @@ $breakpoints: (
 
 $tomato: #e84855;
 $periwinkle: #69ace2;
+$navy: #1D6096;
 $purplegray: #403f4c;
 $subtle-tomato: rgba(232, 72, 85, 0.6);
 $subtle-peri: rgba(105, 172, 226, 0.7);
+$subtle-navy: rgba(29 , 96, 150, 0.7);
+$lightbg1: rgba(195, 207, 206, 0.9);
+$lightbg2: rgba(195, 207, 206, 0.8);
+$darkbg: rgba(195, 207, 206, 1);
 
 @font-face {
   font-family: 'Gilroy';
@@ -33,6 +38,13 @@ $subtle-peri: rgba(105, 172, 226, 0.7);
 
 @include media('>phone', '<tablet') {
   #__next {
+    background: -webkit-gradient(
+        linear,
+        left bottom, left top,
+        from(rgba(172, 129, 49, 0.8)),
+        to(rgba(115, 76, 133, 0.8))
+      ),
+      url('/static/images/vector2.jpg');
     background: linear-gradient(
         0deg,
         rgba(172, 129, 49, 0.8),
@@ -121,11 +133,18 @@ nav ul {
   font-weight: 800;
 }
 
-#__next {
+.full-body1 {
+  background: -webkit-gradient(
+      linear,
+      left bottom, left top,
+      from($lightbg2),
+      to($lightbg2)
+    ),
+    url('/static/images/vector2.jpg');
   background: linear-gradient(
       0deg,
-      rgba(195, 207, 206, 0.8),
-      rgba(195, 207, 206, 0.8)
+      $lightbg2,
+      $lightbg2
     ),
     url('/static/images/vector2.jpg');
   background-position-x: center;
@@ -137,6 +156,31 @@ nav ul {
   color: #403f4c;
   letter-spacing: 0.03em;
 }
+
+.full-body2 {
+  background: -webkit-gradient(
+      linear,
+      left bottom, left top,
+      from($lightbg1),
+      to($lightbg1)
+    ),
+    url('/static/images/triangulation_mathematica_big.jpg');
+  background: linear-gradient(
+      0deg,
+      $lightbg1,
+      $lightbg1
+    ),
+    url('/static/images/triangulation_mathematica_big.jpg');
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: HKgrotesk;
+    color: #403f4c;
+    letter-spacing: 0.03em;
+}
+
 .box {
   width: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
   height: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
@@ -189,13 +233,14 @@ nav ul {
   font-family: Gilroy;
 }
 
-.back-top svg {
+.back-top {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   position: relative;
-  bottom: -7%;
-  left: 50%;
+  left: 41%;
   z-index: 2;
   letter-spacing: 0.1em;
-  text-decoration: none;
 }
 
 .grid-layout .description {
@@ -215,9 +260,11 @@ nav ul {
     font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
   }
 }
-.pinned-link span {
+.pinned-link {
   // width: 96vw;
   // text-align: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   position: relative;
   bottom: 10vh;
@@ -290,9 +337,14 @@ nav ul {
   text-align: left;
 }
 .grid-layout {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
   height: 100vh;
+}
+.grid-layout.pinned{
+  height: auto;
 }
 
 .grid-layout .repo-card {
@@ -312,7 +364,8 @@ nav ul {
 }
 .grid-layout .repo-card a:hover {
   background: $subtle-peri;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .grid-layout .repo-card .repo-lang {
@@ -327,6 +380,13 @@ nav ul {
   border-radius: 10px;
   height: 100%;
   padding: 15px;
+  button{
+    border: 4px solid $tomato;
+  }
+  button:hover{
+    box-shadow: 0px 0px 0px 3px $tomato;
+  }
+  
 }
 
 .grid-layout .repo-pinned {
@@ -339,13 +399,17 @@ div.map {
     .location-text {
       background-color: $subtle-peri;
       font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
-      text-decoration: underline wavy $tomato;
+      -webkit-text-decoration: underline wavy $tomato;
+              text-decoration: underline wavy $tomato;
     }
   }
 }
 .map svg {
-  width: 98vw;
-  margin-bottom: 20vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  // margin-bottom: 20vh;
+  height: 66vh;
 }
 
 .grid-layout.pinned > a {
@@ -356,4 +420,64 @@ div.map {
   font-size: calc(30px + (40 - 30) * ((100vw - 375px) / (1440 - 375)));
   font-weight: 800;
   font-family: Gilroy;
+}
+
+
+div[class^='StyledDrop']{
+  width: 100%;
+  height: 100%;
+  top:0 !important;
+  max-height: 100% !important;
+  font-family: HKgrotesk;
+  background-color: $darkbg;
+  .readme{
+    padding: 50px;
+    button{
+      font-weight: 800;
+      font-family: Gilroy;
+
+    }
+    a{
+      font-family: Gilroy;
+      font-weight: 600;
+      color: #403f4c;
+      background-color: $subtle-navy;
+      word-break: keep-all;
+      margin-bottom: 9px;
+      text-transform: uppercase;
+      img{
+        background-color: transparent;
+      }
+    }
+    a:hover {
+      background: $subtle-tomato;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+    }
+    p{
+      width: 100%;
+      max-width: 100%;
+    }
+    // text-align: left;
+    img{
+      max-width:100%;
+      max-height:100%;
+    }
+    h1{
+      font-family: Gilroy;
+    }
+    h3{
+      // font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
+      -webkit-text-decoration: underline wavy $navy;
+              text-decoration: underline wavy $navy;
+    }
+    h4{
+      font-family: Gilroy;
+      color: #1D6096;
+    }
+    strong{
+      font-family: Gilroy;
+      color: $navy;
+    }
+  }
 }

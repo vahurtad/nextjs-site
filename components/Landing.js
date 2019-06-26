@@ -18,30 +18,37 @@ import Pinned from './Pinned';
 class Landing extends Component {
   constructor() {
     super();
+    this.down = React.createRef();
     this.up = React.createRef();
-    this.top = React.createRef();
-    this.state = { pe: false, sf: false, location: '' };
+    this.state = { 
+      pe: false,
+      sf: false, 
+      location: '', 
+      background: '2' 
+    };
   }
 
-  // handleClick = () => alert(this.up.current.value)
-  // componentDidMount() {
-  //   document.title = 'Components - ';
-  //   this.scrollToView();
-  // }
+  componentDidMount() {
+    this.scrollToView();
+    this.scrollTop();
+  }
 
-  // componentDidUpdate() {
-  //   this.scrollToView();
-  // }
   scrollToView = () => {
-    this.up.current.scrollIntoView({
+    this.down.current.scrollIntoView({
       behavior: 'smooth'
     });
+    this.setState({background :'1'})
   };
 
   scrollTop = () => {
-    this.top.current.scrollIntoView({
-      behavior: 'smooth'
-    });
+    setTimeout(() => {
+      // scrollIntoView only working with timeout ¯\_(ツ)_/¯ 
+      this.up.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }, 100);
+    
+    this.setState({background :'2'})
   };
 
   onSelectPlace = ([lat, lon]) => {
@@ -64,7 +71,7 @@ class Landing extends Component {
   render() {
     const { pe, sf, location } = this.state;
     return (
-      <Grommet full>
+      <Grommet full className={this.state.background ==='1' ? 'full-body1' : 'full-body2'}>
         <Head title="van hurtado" />
         {/* <Nav /> */}
         <ResponsiveContext.Consumer>
@@ -84,7 +91,7 @@ class Landing extends Component {
               >
                 <div className="box">
                   <div className="shape">
-                    <span ref={this.top} />
+                    <span ref={this.up} />
                   </div>
                 </div>
                 <Heading level={1} className="hero title">
@@ -177,7 +184,7 @@ class Landing extends Component {
         />
         <Box
           className="map"
-          ref={this.up}
+          ref={this.down}
           // onMouseOver={() => this.setState({ over: true })}
           // onMouseOut={() => this.setState({ over: false })}
         >
@@ -185,18 +192,18 @@ class Landing extends Component {
             {'From '}
             {pe ? (
               <Text className="location-text" weight={800}>
-                {`${location}`}
+                {`${location}, Peru`}
               </Text>
             ) : (
-              ' Lima'
+              ' Lima, Peru '
             )}
-            {', Peru to the '}
+            {' to the '}
             {sf ? (
               <Text className="location-text" weight={800}>
                 {`${location}`}
               </Text>
             ) : (
-              ' Bay Area '
+              ' Bay Area'
             )}
             {'.'}
           </Paragraph>
@@ -209,7 +216,6 @@ class Landing extends Component {
               {
                 name: 'South America',
                 color: '#e84855'
-                // onHover: () => this.setState({ over: false })
               },
               {
                 name: 'North America',
@@ -225,7 +231,6 @@ class Landing extends Component {
                 location: [-12.046374, -77.042793],
                 color: pe ? '#69ace2' : '#403f4c',
                 id: 'lima'
-                // onHover: () => this.setState({ over: true })
               },
               {
                 name: 'SF',
@@ -254,6 +259,8 @@ class Landing extends Component {
           color="#403f4c"
           className="back-top"
           onClick={this.scrollTop}
+          label='Back to Top'
+          reverse
         />
       </Grommet>
     );
