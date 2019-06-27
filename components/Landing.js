@@ -73,7 +73,6 @@ class Landing extends Component {
     return (
       <Grommet full className={this.state.background ==='1' ? 'full-body1' : 'full-body2'}>
         <Head title="van hurtado" />
-        {/* <Nav /> */}
         <ResponsiveContext.Consumer>
           {() => (
             <Grid

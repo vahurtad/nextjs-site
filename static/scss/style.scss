@@ -181,6 +181,30 @@ nav ul {
     letter-spacing: 0.03em;
 }
 
+.full-body3 {
+  background: -webkit-gradient(
+      linear,
+      left bottom, left top,
+      from($lightbg2),
+      to($subtle-peri)
+    ),
+    url('/static/images/vector-all.jpg');
+  background: linear-gradient(
+      180deg,
+      $lightbg2,
+      $subtle-peri
+    ),
+    url('/static/images/vector-all.jpg');
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: HKgrotesk;
+    color: #403f4c;
+    letter-spacing: 0.03em;
+}
+
 .box {
   width: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));
   height: calc(40vw + (50 - 40) * ((100vw - 375px) / (1440 - 375)));

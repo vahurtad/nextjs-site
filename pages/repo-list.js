@@ -13,7 +13,7 @@ class RepoList extends Container{
     const { apolloClient } = this.props
     return (
       <ApolloProvider client={apolloClient}>
-        <Grommet full>
+        <Grommet full className='full-body3'>
           <Head title="vanessa hurtado" />
           <Nav />
           <Repo />
