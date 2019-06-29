@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "alias": "my-website",
     "name": "my-website",
     "github": {
         "enabled": true 
