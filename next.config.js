@@ -36,3 +36,6 @@ module.exports = withSass({
 });
 module.exports = withSass(withCSS());
 module.exports = ()=>withSass(withImages());
+module.exports = {
+  target: 'serverless'
+}
