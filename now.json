@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "alias": "my-website",
+    "name": "my-website",
+    "builds": [
+        { "src": "next.config.js", "use": "@now/next" }
+      ]
+  }
+  

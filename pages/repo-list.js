@@ -14,7 +14,7 @@ class RepoList extends Container{
     return (
       <ApolloProvider client={apolloClient}>
         <Grommet full className='full-body3'>
-          <Head title="vanessa hurtado" />
+          <Head title="van hurtado" />
           <Nav />
           <Repo />
         </Grommet>
