@@ -4,8 +4,16 @@
     "github": {
         "enabled": true 
     },
+    "env": {
+        "YOUR_GITHUB_PERSONAL_TOKEN" : "5ccbd16f8cd8ab63ef345fb3b3d445a13091fcbf"
+    },
     "builds": [
         { "src": "next.config.js", "use": "@now/next" }
-      ]
-  }
+    ],
+    "build": {
+        "env": {
+            "YOUR_GITHUB_PERSONAL_TOKEN" : "5ccbd16f8cd8ab63ef345fb3b3d445a13091fcbf"
+        }
+    }
+}
   
