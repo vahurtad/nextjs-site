@@ -117,17 +117,16 @@ const Repo = () => (
                       >
                         <Text>{repo.description}</Text>
                         <br />
-                        <Text color="#403f4c" weight={800}>
+                        {/* <Text color="#403f4c" weight={800}>
                             |
-                        </Text>
+                        </Text> */}
                         {repo.languages.nodes.map(l => (
                           <>
                             <Text className="repo-lang" color="#403f4c">
                               {l.name}
                             </Text>
-                            <Text color="#403f4c" weight={800}>
-                              {' '}
-                              |
+                            <Text color="#403f4c" weight={800} className='comma'>
+                              ,
                             </Text>
                           </>
                         ))}

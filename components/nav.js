@@ -13,14 +13,14 @@ const Nav = () => (
           </a>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link prefetch href="/repo-list">
           <a href="/repo-list">
             Projects
             <Next color="#403f4c" size="medium" />
           </a>
         </Link>
-      </li>
+      </li> */}
     </ul>
 
     <style jsx>

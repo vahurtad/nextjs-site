@@ -1,11 +1,12 @@
 import React from 'react';
-import Link from 'next/link';
+
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { DropButton, Image, Markdown, Box, Button, Text, Paragraph, Anchor } from 'grommet';
 import { Close, LinkNext } from 'grommet-icons';
-import Loading from './Loading';
+import Readme from './Readme';
 import Error from './Error';
+import Loading from './Loading';
 import '../static/scss/style.scss';
 
 const shortid = require('shortid');
@@ -44,22 +45,6 @@ const repoList = {
   'traderfeed': 0,
   'lcf-generatepress': 0
 };
-const Quote = ({ children, ...rest }) => (
-  <Box
-    pad="medium"
-    round="medium"
-    border={{
-      side: 'all',
-      color: 'brand',
-      size: '1px'
-    }}
-    {...rest}
-  >
-    <Text>
-        {children}
-    </Text>
-  </Box>
-);
 
 const Pre = ({ children }) => (
   <Box
@@ -90,9 +75,6 @@ class Pinned extends React.Component {
     const { open } = this.state;
     return(
       <>
-        <Link prefetch href="/repo-list">
-          <a href="/repo-list"> See More Projects.</a>
-        </Link>
         {Object.keys(repoList).map((key) => (
           <Query
             key={shortid.generate()}
@@ -128,22 +110,21 @@ class Pinned extends React.Component {
                     background="rgba(195,207,206,0.9)"
                     key={shortid.generate()}
                   >
-                    <Text key={shortid.generate()}>{data.repository.description}</Text>
+                    { // only missing description  is civic-app so adding manually for now
+                      !data.repository.description ? 
+                        'Civic registers users to vote, matches them with candidates and organizations that represent their views, and aggregates credible and accessible political news.'
+                        :
+                        (
+                          <Text key={shortid.generate()}> 
+                            {data.repository.description}
+                          </Text>
+                        )
+                    }
+                  
                     <br style={{'margin-bottom': '1em'}} />
                     {
                       data.repository.name === 'civic-app' || data.repository.object === null ?
-                        
-                        (
-                          <Anchor
-                            href={data.repository.homepageUrl}
-                            label={data.repository.homepageUrl}
-                            icon={<LinkNext color="#403f4c" />}
-                            reverse
-                            color="#403f4c"
-                            target="blank"
-                            alignSelf='end'
-                          />
-                        )
+                        <Readme name={data.repository.name} href={data.repository.homepageUrl} url={data.repository.url} />
                         :
                         (
                           <DropButton
@@ -153,7 +134,7 @@ class Pinned extends React.Component {
                             dropAlign={{ top: 'top', left: 'left' }}
                             dropContent={
                               (
-                                <Box className='readme'>
+                                <Box className='readme full-body2'>
                                   <Button 
                                     label='CLOSE'
                                     onClick={this.onClose} 
@@ -164,9 +145,6 @@ class Pinned extends React.Component {
                                   />
                                   <Markdown
                                     components={{
-                                      blockquote: {
-                                        component: Quote
-                                      },
                                       pre: {
                                         component: Pre
                                       },
@@ -210,16 +188,13 @@ class Pinned extends React.Component {
                     }
                    
                     <br style={{'margin-bottom': '1em'}} />
-                    <Text color="#403f4c" weight={800}>
-                        |
-                    </Text>
                     {data.repository.languages.edges.map(l => (
                       <>
                         <Text className="repo-lang" color="#403f4c" key={l.id}>
                           {l.node.name}
                         </Text>
-                        <Text color="#403f4c" weight={800}>
-                            |
+                        <Text color="#403f4c" weight={800} className='comma'>
+                            ,
                         </Text>
                       </>
                     ))}

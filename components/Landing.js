@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import '../static/scss/style.scss';
 import {
+  Button,
   WorldMap,
   Paragraph,
   Anchor,
@@ -11,7 +13,7 @@ import {
   Grid,
   Text
 } from 'grommet';
-import { Down, Up, Mail, Document, Linkedin, Github } from 'grommet-icons';
+import { Next, Down, Up, Mail, Document, Linkedin, Github } from 'grommet-icons';
 import Head from './head';
 import Pinned from './Pinned';
 
@@ -71,7 +73,7 @@ class Landing extends Component {
   render() {
     const { pe, sf, location } = this.state;
     return (
-      <Grommet full className={this.state.background ==='1' ? 'full-body1' : 'full-body2'}>
+      <Grommet full className='full-body1'>
         <Head title="van hurtado" />
         <ResponsiveContext.Consumer>
           {() => (
@@ -178,7 +180,7 @@ class Landing extends Component {
           color="#403f4c"
           label="See Pinned Projects."
           reverse
-          icon={<Down color="#403f4c" size="large" />}
+          icon={<Down color="#403f4c" size="medium" />}
           onClick={this.scrollToView}
         />
         <Box
@@ -241,6 +243,17 @@ class Landing extends Component {
             selectColor="#403f4c"
           />
         </Box>
+        
+        <Heading level={1} className='pinned-title'>Pinned Projects.</Heading>
+        <Anchor
+          href='/repo-list'
+          className='see-more'
+          icon={<Next color="#403f4c" size="medium" />}
+          weight={200}
+          color="#403f4c"
+          label='See More Projects.'
+          reverse
+        />
         <Grid
           id="pinned"
           className="grid-layout pinned"
@@ -249,11 +262,10 @@ class Landing extends Component {
           columns={['1/2', '1/2']}
         >
           <Pinned />
-          {/* <span ref={this.up} /> */}
         </Grid>
         <br />
         <Anchor
-          icon={<Up color="#403f4c" size="large" />}
+          icon={<Up color="#403f4c" size="medium" />}
           weight={200}
           color="#403f4c"
           className="back-top"
