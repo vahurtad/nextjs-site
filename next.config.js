@@ -1,10 +1,16 @@
 const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css')
-const withImages = require('next-images');
 const withOptimizedImages = require('next-optimized-images');
+const withPlugins = require('next-compose-plugins');
+// const webpack = require('webpack');
+// const { parsed: localEnv } = require('dotenv').config()
 
-module.exports = withImages()
-module.exports = withOptimizedImages({
+const cssConfig = {
+}
+const sassConfig = {
+};
+
+const optimizedImagesConfig = {
   inlineImageLimit: 8192,
   imagesFolder: 'images',
   imagesName: '[name]-[hash].[ext]',
@@ -27,15 +33,15 @@ module.exports = withOptimizedImages({
     preset: 'default',
     quality: 75
   }
-  /* config for next-optimized-images */
- 
-  // your config for other plugins or the general next.js here...
-});
-module.exports = withSass({
-  cssModules: true
-});
-module.exports = withSass(withCSS());
-module.exports = ()=>withSass(withImages());
-module.exports = {
-  target: 'serverless'
-}
+};
+
+const nextConfiguration = {
+  target: 'serverless',
+
+};
+
+module.exports = withPlugins([
+  [withCSS, cssConfig],
+  [withSass, sassConfig],
+  [withOptimizedImages, optimizedImagesConfig],
+], nextConfiguration);
