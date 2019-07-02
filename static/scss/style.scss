@@ -302,17 +302,19 @@ nav ul {
   padding: 33px 33px 0;
 }
 .grid-layout .socials {
-  .heading-bold {
-    font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
-  }
-
   // margin-bottom: 100vh;//
   z-index: 99;
   padding: 0 33px 0;
+  .heading-bold {
+    font-size: calc(35px + (50 - 35) * ((100vw - 375px) / (1440 - 375)));
+  }
   a {
     display: inline-table;
     color: $purplegray;
     font-size: calc(15px + (20 - 15) * ((100vw - 375px) / (1440 - 375)));
+  }
+  a:hover{
+    color:$tomato;
   }
 }
 
@@ -330,7 +332,7 @@ div[class^='full-body'] .pinned-title{
   display: -ms-inline-flexbox;
   display: inline-flex;
   position: relative;
-  bottom: 10vh;
+  bottom: 8vh;
   left: 41%;
   z-index: 2;
   letter-spacing: 0.1em;

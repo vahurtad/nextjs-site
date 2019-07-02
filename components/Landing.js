@@ -73,8 +73,8 @@ class Landing extends Component {
   render() {
     const { pe, sf, location } = this.state;
     return (
-      <Grommet full className='full-body1'>
-        <Head title="van hurtado" />
+      <>
+
         <ResponsiveContext.Consumer>
           {() => (
             <Grid
@@ -95,7 +95,7 @@ class Landing extends Component {
                     <span ref={this.up} />
                   </div>
                 </div>
-                <Heading level={1} className="hero title">
+                <Heading a11yTitle='hello world' level={1} className="hero title">
                   <Text className="hello">
                     Hello
                     <Text>.</Text>
@@ -105,7 +105,7 @@ class Landing extends Component {
                     World
                     <Text>.</Text>
                   </Text>
-                  <Text className="name">
+                  <Text className="name" a11yTitle='i`m vanessa'>
                     <br style={{ 'margin-bottom': '0.75em' }} />
                     I`m
                     <Text> Vanessa</Text>
@@ -139,7 +139,7 @@ class Landing extends Component {
                   Graduated 2016
                 </Paragraph>
               </Box>
-              <Box className="socials">
+              <Box className="socials" a11yTitle='social links to find me'>
                 <Text weight={800} className="heading-bold">
                   <br />
                   Find me here.
@@ -209,6 +209,7 @@ class Landing extends Component {
             {'.'}
           </Paragraph>
           <WorldMap
+            a11yTitle='map showing where i am from'
             alignSelf="center"
             height="350"
             color="#403f4c"
@@ -255,6 +256,7 @@ class Landing extends Component {
           reverse
         />
         <Grid
+          a11yTitle='see my pinned repos'
           id="pinned"
           className="grid-layout pinned"
           align="end"
@@ -273,7 +275,7 @@ class Landing extends Component {
           label='Back to Top'
           reverse
         />
-      </Grommet>
+      </>
     );
   }
 }
