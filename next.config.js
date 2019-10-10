@@ -2,6 +2,7 @@ const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css')
 const withOptimizedImages = require('next-optimized-images');
 const withPlugins = require('next-compose-plugins');
+const CompressionPlugin = require("compression-webpack-plugin");
 // const webpack = require('webpack');
 // const { parsed: localEnv } = require('dotenv').config()
 
@@ -14,7 +15,9 @@ const optimizedImagesConfig = {
   inlineImageLimit: 8192,
   imagesFolder: 'images',
   imagesName: '[name]-[hash].[ext]',
-  optimizeImagesInDev: false,
+  handleImages: ['jpeg', 'jpg', 'png', 'svg', 'webp', 'gif'],
+  optimizeImages: true,
+  optimizeImagesInDev: true,
   mozjpeg: {
     quality: 80
   },
@@ -26,9 +29,6 @@ const optimizedImagesConfig = {
     interlaced: true,
     optimizationLevel: 3
   },
-  svgo: {
-    // enable/disable svgo plugins here
-  },
   webp: {
     preset: 'default',
     quality: 75
@@ -37,11 +37,22 @@ const optimizedImagesConfig = {
 
 const nextConfiguration = {
   target: 'serverless',
+  compression: true,
 
 };
+
+const compressionConfiguration = {
+  filename: '[path].gz[query]',
+  algorithm: 'gzip',
+  test: /\.js$|\.css$|\.html$/,
+  threshold: 10240,
+  minRatio: 0.8,
+  cache: true,
+}
 
 module.exports = withPlugins([
   [withCSS, cssConfig],
   [withSass, sassConfig],
   [withOptimizedImages, optimizedImagesConfig],
+  [new CompressionPlugin(), compressionConfiguration]
 ], nextConfiguration);

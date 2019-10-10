@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start -p 3000",
     "pretty": "pretty-quick"
   },
   "dependencies": {
@@ -18,6 +18,7 @@
     "apollo-link-rest": "^0.7.3",
     "apollo-server-express": "^2.3.1",
     "babel-eslint": "^10.0.2",
+    "compression-webpack-plugin": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^3.1.0",
@@ -32,6 +33,8 @@
     "graphql-tag": "^2.10.1",
     "grommet": "^2.7.0",
     "grommet-icons": "^4.2.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.0.0",
     "include-media": "^1.4.9",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^7.0.2",

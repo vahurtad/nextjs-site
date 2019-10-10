@@ -13,7 +13,7 @@ import {
   Grid,
   Text
 } from 'grommet';
-import { Next, Down, Up, Mail, Document, Linkedin, Github } from 'grommet-icons';
+import { Next, Down, Up, Mail, Document, Linkedin, Github, Favorite } from 'grommet-icons';
 import Head from './head';
 import Pinned from './Pinned';
 
@@ -95,23 +95,63 @@ class Landing extends Component {
                     <span ref={this.up} />
                   </div>
                 </div>
-                <Heading a11yTitle='hello world' level={1} className="hero title">
-                  <Text className="hello">
+                <Grid
+                  className="grid-layout"
+                  align="start"
+                  alignContent="start"
+                  rows={['1/3', '2/3']}
+                >
+                  <Heading a11yTitle='hello world' level={1} className="hero title">
+                    <Text className="hello">
                     Hello
-                    <Text>.</Text>
-                  </Text>
-                  <br />
-                  <Text className="world">
+                      <Text>.</Text>
+                    </Text>
+                    <br />
+                    <Text className="world">
                     World
-                    <Text>.</Text>
-                  </Text>
-                  <Text className="name" a11yTitle='i`m vanessa'>
-                    <br style={{ 'margin-bottom': '0.75em' }} />
+                      <Text>.</Text>
+                    </Text>
+                    <Text className="name" a11yTitle='i`m vanessa'>
+                      <br style={{ 'margin-bottom': '0.75em' }} />
                     I`m
-                    <Text> Vanessa</Text>
-                    <Text>.</Text>
-                  </Text>
-                </Heading>
+                      <Text> Vanessa</Text>
+                      <Text>.</Text>
+                    </Text>
+                  </Heading>
+                  <Box className="socials" a11yTitle='social links to find me'>
+                    <Text weight={800} className="heading-bold">
+                      <br />
+                  Find me here.
+                      <br />
+                      <br />
+                    </Text>
+                    <Anchor
+                      icon={<Github color="#403f4c" size="large" />}
+                      label="Github"
+                      href="https://github.com/vahurtad"
+                      target="blank"
+                    />
+                    <Anchor
+                      icon={<Linkedin color="#403f4c" size="large" />}
+                      label="LinkedIn"
+                      href="https://www.linkedin.com/in/hurtadovanessa/"
+                      target="blank"
+                    />
+                    <Anchor
+                      icon={<Document color="#403f4c" size="large" />}
+                      label="Resume"
+                      href="https://drive.google.com/file/d/1oNC15Mskk4_fYVvxLzk2PwtZsDAq5q0g/view"
+                      target="blank"
+                    />
+                    <Anchor
+                      icon={<Mail color="#403f4c" size="large" />}
+                      label="Email me"
+                      href="mailto:vahurtad@gmail.com"
+                      target="blank"
+                    />
+                  </Box>
+                </Grid>
+                
               </Box>
               <Box flex="grow" justify="start" className="description">
                 <Paragraph className="about">
@@ -138,43 +178,21 @@ class Landing extends Component {
                   <br />
                   Graduated 2016
                 </Paragraph>
-              </Box>
-              <Box className="socials" a11yTitle='social links to find me'>
-                <Text weight={800} className="heading-bold">
+                
+                <Paragraph className="currently">
                   <br />
-                  Find me here.
-                  <br />
-                  <br />
-                </Text>
-                <Anchor
-                  icon={<Github color="#403f4c" size="large" />}
-                  label="Github"
-                  href="https://github.com/vahurtad"
-                  target="blank"
-                />
-                <Anchor
-                  icon={<Linkedin color="#403f4c" size="large" />}
-                  label="LinkedIn"
-                  href="https://www.linkedin.com/in/hurtadovanessa/"
-                  target="blank"
-                />
-                <Anchor
-                  icon={<Document color="#403f4c" size="large" />}
-                  label="Resume"
-                  href="https://drive.google.com/file/d/1ltOYN02gCaA473H596rsJ-doAjHwxzFd/view"
-                  target="blank"
-                />
-                <Anchor
-                  icon={<Mail color="#403f4c" size="large" />}
-                  label="Email me"
-                  href="mailto:vanessa_hurtado@yahoo.com"
-                  target="blank"
-                />
+                  <Text weight={800} className="heading-bold">
+                    Doing Now.
+                    <br />
+                  </Text>
+                  DataCamp - Data Analyst with R
+                </Paragraph>
               </Box>
             </Grid>
           )}
         </ResponsiveContext.Consumer>
         <Anchor
+          alignSelf="center"
           className="pinned-link"
           weight={800}
           color="#403f4c"
@@ -209,9 +227,10 @@ class Landing extends Component {
             {'.'}
           </Paragraph>
           <WorldMap
-            a11yTitle='map showing where i am from'
+            a11yTitle='Worldmap'
             alignSelf="center"
             height="350"
+            viewBox="-250 0 940 460"
             color="#403f4c"
             legend
             continents={[
@@ -275,6 +294,26 @@ class Landing extends Component {
           label='Back to Top'
           reverse
         />
+        <Paragraph 
+          className='madeby' 
+          alignSelf="center"
+          align="center"
+          alignContent="center"
+          style={{ textAlign:'center',maxWidth:'100%', fontSize:'12px'}}
+        >
+          Made by:
+          <Text style={{fontSize:'14px'}}>
+            Me 
+            <Favorite color="#e84855" size="small" />
+          </Text> 
+          <br />
+          Designed by: 
+          <Text style={{fontSize:'14px'}}>
+            Me 
+            <Favorite color="#e84855" size="small" />
+          </Text> 
+        </Paragraph> 
+
       </>
     );
   }
