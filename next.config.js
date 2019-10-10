@@ -17,7 +17,7 @@ const optimizedImagesConfig = {
   imagesName: '[name]-[hash].[ext]',
   handleImages: ['jpeg', 'jpg', 'png', 'svg', 'webp', 'gif'],
   optimizeImages: true,
-  optimizeImagesInDev: true,
+  optimizeImagesInDev: false,
   mozjpeg: {
     quality: 80
   },

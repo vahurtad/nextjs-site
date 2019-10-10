@@ -185,7 +185,43 @@ class Landing extends Component {
                     Doing Now.
                     <br />
                   </Text>
-                  DataCamp - Data Analyst with R
+                  DataCamp - Quantitative Analyst with R
+                </Paragraph>
+                <Paragraph className="certificates">
+                  <br />
+                  
+                  <Anchor
+                    href='https://github.com/vahurtad/certificates'
+                    icon={<Next color="#403f4c" size="medium" />}
+                    weight={200}
+                    color="#403f4c"
+                    label={(
+                      <Text weight={800} className="heading-bold">
+                        Certificates.
+                      </Text>
+                    )}
+                    reverse
+                  />
+                  <br />
+                  <br />
+                  Importing Data in R (Part 1)
+                  <br />
+
+                  Intermediate R for Finance
+                  <br />
+
+                  Introduction to R
+                  <br />
+
+                  Introduction to the Tidyverse
+                  <br />
+
+                  Pivot Tables with Spreadsheets
+                  <br />
+                  Probability Puzzles in R
+                  <br />
+                  Working with Web Data in R
+
                 </Paragraph>
               </Box>
             </Grid>

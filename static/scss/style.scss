@@ -509,9 +509,9 @@ div[class^='full-body'] .pinned-title{
 }
 
 .see-more{
-  position: absolute;
-  left: 35%;
-  top: 15px;
+  // position: absolute;
+  // left: 35%;
+  // top: 15px;
   z-index: -1;
   // padding-right: 35px;
   // text-align: center;
@@ -519,6 +519,14 @@ div[class^='full-body'] .pinned-title{
   // left: 41%;
   // z-index: 2;
   // letter-spacing: 0.1em;
+
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  letter-spacing: 0.1em;
+  text-align: end;
+  padding-right: 50px;
 }
 div.map {
   // margin-top: 100vh;

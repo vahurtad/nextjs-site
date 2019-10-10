@@ -26,12 +26,3 @@ During the start of my iteration and research, I looked at what I wanted: simpli
 
 ### Help
 I was able to use GraphQl + Apollo + Node with the help of [HttpLink in this example](https://github.com/brentmclark/node-graphql-playground) with more edits of my own.
-
-
-### Needed Features
-[] Mobile Improvements
-[] More loading improvements
-[] Web Accessible Check
-[] Add Spanish translation using [my example](https://github.com/vahurtad/i18n-Example)
-[] Use another hosting service/ pay for heroku so website is not slow on fisrt load
-[] Get a domain
