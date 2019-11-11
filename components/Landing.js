@@ -168,7 +168,7 @@ class Landing extends Component {
                   <br />
                   University of California, Santa Cruz
                   <br />
-                  Graduated 2016
+                  Graduated December 2016
                 </Paragraph>
 
                 <Paragraph className="currently">
