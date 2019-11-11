@@ -12,7 +12,7 @@ class Home extends Container {
     const { apolloClient } = this.props;
     return (
       <ApolloProvider client={apolloClient}>
-        <Grommet full className='full-body1'>
+        <Grommet full className="full-body1">
           <Head title="van hurtado" />
           <Landing />
         </Grommet>

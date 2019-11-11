@@ -125,7 +125,11 @@ const Repo = () => (
                             <Text className="repo-lang" color="#403f4c">
                               {l.name}
                             </Text>
-                            <Text color="#403f4c" weight={800} className='comma'>
+                            <Text
+                              color="#403f4c"
+                              weight={800}
+                              className="comma"
+                            >
                               ,
                             </Text>
                           </>
@@ -143,6 +147,6 @@ const Repo = () => (
       );
     }}
   </Query>
-)
+);
 
 export default Repo;

@@ -134,6 +134,7 @@ class Pinned extends React.Component {
                         label="Read More"
                         open={open}
                         onClose={() => this.setState({ open: undefined })}
+                        dropAlign={{ top: 'top', left: 'left' }}
                         dropContent={
                           <Box className="readme full-body2">
                             <Button
