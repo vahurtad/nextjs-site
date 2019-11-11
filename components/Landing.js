@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
 import '../static/scss/style.scss';
 import {
   Button,
@@ -8,13 +7,20 @@ import {
   Anchor,
   Heading,
   ResponsiveContext,
-  Grommet,
   Box,
   Grid,
   Text
 } from 'grommet';
-import { Next, Down, Up, Mail, Document, Linkedin, Github, Favorite } from 'grommet-icons';
-import Head from './head';
+import {
+  Next,
+  Down,
+  Up,
+  Mail,
+  Document,
+  Linkedin,
+  Github,
+  Favorite
+} from 'grommet-icons';
 import Pinned from './Pinned';
 
 class Landing extends Component {
@@ -22,11 +28,10 @@ class Landing extends Component {
     super();
     this.down = React.createRef();
     this.up = React.createRef();
-    this.state = { 
+    this.state = {
       pe: false,
-      sf: false, 
-      location: '', 
-      background: '2' 
+      sf: false,
+      location: ''
     };
   }
 
@@ -39,18 +44,15 @@ class Landing extends Component {
     this.down.current.scrollIntoView({
       behavior: 'smooth'
     });
-    this.setState({background :'1'})
   };
 
   scrollTop = () => {
     setTimeout(() => {
-      // scrollIntoView only working with timeout ¯\_(ツ)_/¯ 
+      // scrollIntoView only working with timeout ¯\_(ツ)_/¯
       this.up.current.scrollIntoView({
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     }, 100);
-    
-    this.setState({background :'2'})
   };
 
   onSelectPlace = ([lat, lon]) => {
@@ -74,7 +76,6 @@ class Landing extends Component {
     const { pe, sf, location } = this.state;
     return (
       <>
-
         <ResponsiveContext.Consumer>
           {() => (
             <Grid
@@ -83,76 +84,67 @@ class Landing extends Component {
               alignContent="start"
               columns={['1/3', '2/3']}
             >
-              <Box
+              <Grid
                 className="first-box"
-                fill="horizontal"
-                direction="row"
-                flex="grow"
-                justify="start"
+                align="start"
+                alignContent="start"
+                rows={['1/3', '2/3']}
               >
-                <div className="box">
-                  <div className="shape">
-                    <span ref={this.up} />
-                  </div>
-                </div>
-                <Grid
-                  className="grid-layout"
-                  align="start"
-                  alignContent="start"
-                  rows={['1/3', '2/3']}
+                <span ref={this.up} />
+                <Heading
+                  a11yTitle="hello world"
+                  level={1}
+                  className="hero title"
                 >
-                  <Heading a11yTitle='hello world' level={1} className="hero title">
-                    <Text className="hello">
+                  <Text className="hello">
                     Hello
-                      <Text>.</Text>
-                    </Text>
-                    <br />
-                    <Text className="world">
+                    <Text>.</Text>
+                  </Text>
+                  <br />
+                  <Text className="world">
                     World
-                      <Text>.</Text>
-                    </Text>
-                    <Text className="name" a11yTitle='i`m vanessa'>
-                      <br style={{ 'margin-bottom': '0.75em' }} />
+                    <Text>.</Text>
+                  </Text>
+                  <Text className="name" a11yTitle="i`m vanessa">
+                    <br style={{ 'margin-bottom': '0.75em' }} />
                     I`m
-                      <Text> Vanessa</Text>
-                      <Text>.</Text>
-                    </Text>
-                  </Heading>
-                  <Box className="socials" a11yTitle='social links to find me'>
-                    <Text weight={800} className="heading-bold">
-                      <br />
-                  Find me here.
-                      <br />
-                      <br />
-                    </Text>
-                    <Anchor
-                      icon={<Github color="#403f4c" size="large" />}
-                      label="Github"
-                      href="https://github.com/vahurtad"
-                      target="blank"
-                    />
-                    <Anchor
-                      icon={<Linkedin color="#403f4c" size="large" />}
-                      label="LinkedIn"
-                      href="https://www.linkedin.com/in/hurtadovanessa/"
-                      target="blank"
-                    />
-                    <Anchor
-                      icon={<Document color="#403f4c" size="large" />}
-                      label="Resume"
-                      href="https://drive.google.com/file/d/1oNC15Mskk4_fYVvxLzk2PwtZsDAq5q0g/view"
-                      target="blank"
-                    />
-                    <Anchor
-                      icon={<Mail color="#403f4c" size="large" />}
-                      label="Email me"
-                      href="mailto:vahurtad@gmail.com"
-                      target="blank"
-                    />
-                  </Box>
-                </Grid>
-                
-              </Box>
+                    <Text> Vanessa</Text>
+                    <Text>.</Text>
+                  </Text>
+                </Heading>
+                <Box className="socials" a11yTitle="social links to find me">
+                  <Text weight={800} className="heading-bold">
+                    <br />
+                    Find me here.
+                    <br />
+                    <br />
+                  </Text>
+                  <Anchor
+                    icon={<Github color="#403f4c" size="large" />}
+                    label="Github"
+                    href="https://github.com/vahurtad"
+                    target="blank"
+                  />
+                  <Anchor
+                    icon={<Linkedin color="#403f4c" size="large" />}
+                    label="LinkedIn"
+                    href="https://www.linkedin.com/in/hurtadovanessa/"
+                    target="blank"
+                  />
+                  <Anchor
+                    icon={<Document color="#403f4c" size="large" />}
+                    label="Resume"
+                    href="https://drive.google.com/file/d/1oNC15Mskk4_fYVvxLzk2PwtZsDAq5q0g/view"
+                    target="blank"
+                  />
+                  <Anchor
+                    icon={<Mail color="#403f4c" size="large" />}
+                    label="Email me"
+                    href="mailto:vahurtad@gmail.com"
+                    target="blank"
+                  />
+                </Box>
+              </Grid>
               <Box flex="grow" justify="start" className="description">
                 <Paragraph className="about">
                   <Text weight={800} className="heading-bold">
@@ -178,7 +170,7 @@ class Landing extends Component {
                   <br />
                   Graduated 2016
                 </Paragraph>
-                
+
                 <Paragraph className="currently">
                   <br />
                   <Text weight={800} className="heading-bold">
@@ -189,54 +181,49 @@ class Landing extends Component {
                 </Paragraph>
                 <Paragraph className="certificates">
                   <br />
-                  
                   <Anchor
-                    href='https://github.com/vahurtad/certificates'
+                    href="https://github.com/vahurtad/certificates"
                     icon={<Next color="#403f4c" size="medium" />}
                     weight={200}
                     color="#403f4c"
-                    label={(
+                    label={
                       <Text weight={800} className="heading-bold">
                         Certificates.
                       </Text>
-                    )}
+                    }
                     reverse
                   />
                   <br />
                   <br />
                   Importing Data in R (Part 1)
                   <br />
-
                   Intermediate R for Finance
                   <br />
-
                   Introduction to R
                   <br />
-
                   Introduction to the Tidyverse
                   <br />
-
                   Pivot Tables with Spreadsheets
                   <br />
                   Probability Puzzles in R
                   <br />
                   Working with Web Data in R
-
                 </Paragraph>
               </Box>
+              <Button
+                alignSelf="center"
+                className="pinned-link"
+                weight={800}
+                color="#403f4c"
+                label="See Pinned Projects."
+                reverse
+                icon={<Down color="#403f4c" size="medium" />}
+                onClick={this.scrollToView}
+              />
             </Grid>
           )}
         </ResponsiveContext.Consumer>
-        <Anchor
-          alignSelf="center"
-          className="pinned-link"
-          weight={800}
-          color="#403f4c"
-          label="See Pinned Projects."
-          reverse
-          icon={<Down color="#403f4c" size="medium" />}
-          onClick={this.scrollToView}
-        />
+
         <Box
           className="map"
           ref={this.down}
@@ -263,7 +250,7 @@ class Landing extends Component {
             {'.'}
           </Paragraph>
           <WorldMap
-            a11yTitle='Worldmap'
+            a11yTitle="Worldmap"
             alignSelf="center"
             height="350"
             viewBox="-250 0 940 460"
@@ -299,19 +286,22 @@ class Landing extends Component {
             selectColor="#403f4c"
           />
         </Box>
-        
-        <Heading level={1} className='pinned-title'>Pinned Projects.</Heading>
+
+        <Text weight={800} className="pinned-title heading-bold">
+          Pinned Projects.
+          <br />
+        </Text>
         <Anchor
-          href='/repo-list'
-          className='see-more'
+          href="/repo-list"
+          className="see-more"
           icon={<Next color="#403f4c" size="medium" />}
           weight={200}
           color="#403f4c"
-          label='See More Projects.'
+          label="See More Projects."
           reverse
         />
         <Grid
-          a11yTitle='see my pinned repos'
+          a11yTitle="see my pinned repos"
           id="pinned"
           className="grid-layout pinned"
           align="end"
@@ -319,37 +309,36 @@ class Landing extends Component {
           columns={['1/2', '1/2']}
         >
           <Pinned />
+          <Button
+            icon={<Up color="#403f4c" size="medium" />}
+            weight={200}
+            color="#403f4c"
+            className="back-top"
+            onClick={this.scrollTop}
+            label="Back to Top"
+          />
         </Grid>
         <br />
-        <Anchor
-          icon={<Up color="#403f4c" size="medium" />}
-          weight={200}
-          color="#403f4c"
-          className="back-top"
-          onClick={this.scrollTop}
-          label='Back to Top'
-          reverse
-        />
-        <Paragraph 
-          className='madeby' 
+
+        <Paragraph
+          className="madeby"
           alignSelf="center"
           align="center"
           alignContent="center"
-          style={{ textAlign:'center',maxWidth:'100%', fontSize:'12px'}}
+          style={{ textAlign: 'center', maxWidth: '100%', fontSize: '14px' }}
         >
           Made by:
-          <Text style={{fontSize:'14px'}}>
-            Me 
+          <Text style={{ fontSize: '16px' }}>
+            Me
             <Favorite color="#e84855" size="small" />
-          </Text> 
+          </Text>
           <br />
-          Designed by: 
-          <Text style={{fontSize:'14px'}}>
-            Me 
+          Designed by:
+          <Text style={{ fontSize: '16px' }}>
+            Me
             <Favorite color="#e84855" size="small" />
-          </Text> 
-        </Paragraph> 
-
+          </Text>
+        </Paragraph>
       </>
     );
   }

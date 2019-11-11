@@ -1,0 +1,12 @@
+#! /app/.heroku/node/bin/node
+const https = require('https');
+const ms = require('ms');
+
+console.log(
+  'will ping `%s` every 30 minutes...',
+  'https://vahurtad.herokuapp.com'
+);
+setInterval(() => {
+  https.get('https://vahurtad.herokuapp.com');
+  console.log('Pinged --- ');
+}, ms('30m'));

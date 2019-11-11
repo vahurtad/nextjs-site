@@ -1,2 +1,12 @@
 {
-}
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "[javascript]": {
+      "editor.tabSize": 2
+    },
+    "[javascriptreact]": {
+      "editor.tabSize": 2
+    }
+  }
+  
